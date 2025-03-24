@@ -1,36 +1,42 @@
 "use client";
-import Link from 'next/link';
+import { WavyBackground } from "@/components/ui/wavy-background";
+import Link from "next/link";
 
 export default function Impressum() {
   return (
-    <main className="min-h-screen bg-[#1a1a1a] py-20">
-      <div className="container mx-auto px-4">
-        <div className="max-w-3xl mx-auto bg-[#2F4F2F] rounded-xl p-8">
-          <h1 className="text-3xl font-bold text-white mb-8">Impressum</h1>
-          <div className="text-gray-300 space-y-4">
-            <p>Enerlytic ist ein Projekt der Enerlytic GmbH</p>
-            <p>Geschäftsführung: Max Mustermann</p>
-            <p>Sitz der Gesellschaft: Musterstraße 123, 12345 Berlin</p>
-            <p>Handelsregister: Amtsgericht Berlin-Charlottenburg, HRB XXXXX</p>
-            <p>Kontakt: info@enerlytic.de</p>
-            
-            <h2 className="text-xl font-bold text-white mt-8 mb-4">Haftungsausschluss</h2>
-            <p>Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen.</p>
-            
-            <h2 className="text-xl font-bold text-white mt-8 mb-4">Urheberrecht</h2>
-            <p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht.</p>
-            
-            <div className="mt-12">
-              <Link 
-                href="/" 
-                className="text-white hover:text-gray-300 transition-colors"
-              >
-                ← Zurück zur Startseite
-              </Link>
+    <main className="min-h-screen bg-[#0a0a0a] text-white font-montserrat">
+      <WavyBackground className="max-w-4xl mx-auto py-20">
+        <div className="relative z-10 px-4">
+          <div className="mb-8">
+            <Link href="/" className="text-[#3A5A40] hover:text-[#4A6A50] transition-colors">
+              ← Zurück zur Startseite
+            </Link>
+          </div>
+          
+          <h1 className="text-4xl font-bold mb-8 text-[#3A5A40]">Impressum</h1>
+
+          <div className="space-y-6 text-gray-300">
+            <div>
+              <h2 className="text-2xl font-semibold mb-4 text-[#3A5A40]">Angaben gemäß § 5 TMG</h2>
+              <p>
+                Max Mustermann<br />
+                Musterstraße 111<br />
+                Gebäude 44<br />
+                90210 Musterstadt
+              </p>
+            </div>
+
+            <div>
+              <h2 className="text-2xl font-semibold mb-4 text-[#3A5A40]">Kontakt</h2>
+              <p>
+                Telefon: +49 (0) 123 44 55 66<br />
+                Telefax: +49 (0) 123 44 55 99<br />
+                E-Mail: mustermann@musterfirma.de
+              </p>
             </div>
           </div>
         </div>
-      </div>
+      </WavyBackground>
     </main>
   );
 } 

@@ -157,15 +157,21 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Minimaler Footer mit Impressum-Link */}
-      <footer className="py-4 bg-[#1a1a1a] border-t border-[#2F4F2F]/20">
+      {/* Footer */}
+      <footer className="bg-[#1a2e1a] py-8">
         <div className="container mx-auto px-4">
-          <div className="text-center">
+          <div className="flex justify-center space-x-8">
             <Link 
               href="/impressum" 
-              className="text-gray-500 text-sm hover:text-gray-400 transition-colors"
+              className="text-white hover:text-[#3A5A40] transition-colors"
             >
               Impressum
+            </Link>
+            <Link 
+              href="/datenschutz" 
+              className="text-white hover:text-[#3A5A40] transition-colors"
+            >
+              Datenschutz
             </Link>
           </div>
         </div>
