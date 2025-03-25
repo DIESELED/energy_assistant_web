@@ -1,6 +1,8 @@
 "use client";
 import { WavyBackgroundDemo } from "@/components/demo";
 import Link from 'next/link';
+import { TimelineDemo } from "@/components/demo";
+import { TestimonialsSectionDemo } from "@/components/demo";
 
 export default function Home() {
   return (
@@ -20,6 +22,9 @@ export default function Home() {
           </p>
         </div>
       </div>
+      
+      {/* Process Section mit Timeline */}
+      <TimelineDemo />
       
       {/* CTA Section */}
       <section className="bg-[#1a1a1a] py-12">
@@ -156,6 +161,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Testimonials Section */}
+      <TestimonialsSectionDemo />
 
       {/* Footer */}
       <footer className="bg-[#1a2e1a] py-8">

@@ -1,6 +1,10 @@
 "use client";
 import React from "react";
 import { WavyBackground } from "@/components/ui/wavy-background";
+import Image from "next/image";
+import { Timeline } from "@/components/ui/timeline";
+import { TestimonialsSection } from "@/components/blocks/testimonials-with-marquee";
+import { FaqAccordion } from "@/components/ui/faq-chat-accordion";
 
 export function WavyBackgroundDemo() {
   return (
@@ -20,5 +24,146 @@ export function WavyBackgroundDemo() {
     >
       <div className="h-[40vh] md:h-[60vh]" />
     </WavyBackground>
+  );
+}
+
+export function TimelineDemo() {
+  const data = [
+    {
+      title: "Schritt 1",
+      content: (
+        <div>
+          <p className="text-neutral-300 text-xs md:text-sm font-normal mb-8">
+            Fotografiere deine Wohnung oder dein Haus, damit wir dir die besten Energiespartipps geben können
+          </p>
+          <div className="grid grid-cols-1 gap-4">
+            <Image
+              src="/cfbfb9de3f74d96d39c4aca92cc366341f77efdf573bf2c6e982321ccf8cde75.png"
+              alt="Person fotografiert Wohnung"
+              width={800}
+              height={600}
+              className="rounded-lg object-cover h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
+            />
+          </div>
+        </div>
+      ),
+    },
+    {
+      title: "Schritt 2",
+      content: (
+        <div>
+          <p className="text-neutral-300 text-xs md:text-sm font-normal mb-8">
+            Beantworte ein paar einfache Fragen zu deiner Wohnsituation
+          </p>
+          <FaqAccordion 
+            data={[
+              {
+                id: 1,
+                question: "Wie groß ist deine Wohnung/dein Haus?",
+                answer: "Gib einfach die ungefähre Quadratmeterzahl an. Das hilft uns, den Energiebedarf besser einzuschätzen.",
+                icon: "🏠",
+                iconPosition: "left"
+              },
+              {
+                id: 2,
+                question: "Wie viele Personen leben im Haushalt?",
+                answer: "Die Anzahl der Bewohner hat einen großen Einfluss auf den Energieverbrauch.",
+                icon: "👥",
+                iconPosition: "right"
+              },
+              {
+                id: 3,
+                question: "Welche Heizungsart nutzt du?",
+                answer: "z.B. Gas, Öl, Wärmepumpe, Fernwärme - jedes System hat seine eigenen Optimierungsmöglichkeiten.",
+                icon: "🔥"
+              },
+              {
+                id: 4,
+                question: "Wie alt ist das Gebäude?",
+                answer: "Das Baujahr gibt uns wichtige Hinweise auf mögliche Schwachstellen und Verbesserungspotenziale.",
+                icon: "📅",
+                iconPosition: "left"
+              }
+            ]}
+            className="max-w-[600px]"
+            timestamp="Deine Antworten helfen uns, maßgeschneiderte Empfehlungen zu geben"
+          />
+        </div>
+      ),
+    },
+    {
+      title: "Schritt 3",
+      content: (
+        <div>
+          <p className="text-neutral-300 text-xs md:text-sm font-normal mb-8">
+            Erhalte deinen personalisierten Energiesparplan mit konkreten Handlungsempfehlungen
+          </p>
+          <div className="space-y-4">
+            <div className="flex gap-2 items-center text-[#52B788] text-xs md:text-sm">
+              ✅ Maßgeschneiderte Sparstrategien
+            </div>
+            <div className="flex gap-2 items-center text-[#52B788] text-xs md:text-sm">
+              ✅ Konkrete Modernisierungsvorschläge
+            </div>
+            <div className="flex gap-2 items-center text-[#52B788] text-xs md:text-sm">
+              ✅ Berechnung deines Einsparpotentials
+            </div>
+            <div className="flex gap-2 items-center text-[#52B788] text-xs md:text-sm">
+              ✅ Priorisierte Maßnahmenliste
+            </div>
+          </div>
+        </div>
+      ),
+    },
+  ];
+  return (
+    <div className="min-h-screen w-full">
+      <Timeline data={data} />
+    </div>
+  );
+}
+
+export function TestimonialsSectionDemo() {
+  const testimonials = [
+    {
+      author: {
+        name: "Lisa Müller",
+        handle: "Mieterin in Berlin",
+        emoji: "👩"
+      },
+      text: "Der Energiespar-Assistent hat mir super geholfen zu verstehen, wo ich in meiner Altbauwohnung am meisten Energie verschwende. Die Tipps waren wirklich praktisch und einfach umzusetzen!"
+    },
+    {
+      author: {
+        name: "Thomas Weber",
+        handle: "Hausbesitzer in München",
+        emoji: "👨"
+      },
+      text: "Durch die Analyse und Empfehlungen konnte ich meine Heizkosten um 30% senken. Der Bot hat mir genau erklärt, welche Modernisierungen sich für mein Haus am meisten lohnen."
+    },
+    {
+      author: {
+        name: "Sarah Schmidt",
+        handle: "Studentin in Hamburg",
+        emoji: "👩‍🎓"
+      },
+      text: "Als Studentin in einer WG war ich skeptisch, ob sich Energiesparen für uns lohnt. Aber die personalisierten Tipps waren gold wert - wir sparen jetzt richtig Geld!"
+    },
+    {
+      author: {
+        name: "Familie Bauer",
+        handle: "Eigenheimbesitzer",
+        emoji: "👨‍👩‍👧‍👦"
+      },
+      text: "Der Assistent hat uns Schritt für Schritt durch die energetische Sanierung unseres Hauses geführt. Besonders toll fanden wir die konkreten Förderungsmöglichkeiten!"
+    }
+  ];
+
+  return (
+    <TestimonialsSection
+      title="Das sagen unsere Nutzer"
+      description="Tausende von Menschen sparen bereits Energie und Geld mit unserem Assistenten"
+      testimonials={testimonials}
+    />
   );
 } 
