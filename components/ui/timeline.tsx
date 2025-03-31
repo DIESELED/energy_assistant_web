@@ -39,18 +39,16 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
       ref={containerRef}
     >
       <div className="max-w-7xl mx-auto py-20 px-4 md:px-8 lg:px-10">
-        <GradualSpacing
-          text="So funktioniert der Energiespar-Assistent"
-          className="text-lg md:text-4xl mb-4 text-white max-w-4xl font-bold"
-          duration={0.7}
-          delayMultiple={0.05}
-          framerProps={{
-            hidden: { opacity: 0, y: 20 },
-            visible: { opacity: 1, y: 0 },
-          }}
-        />
+        <div className="flex justify-start space-x-1">
+          <GradualSpacing
+            text="So funktioniert der Energiespar-Assistent"
+            className="text-lg md:text-4xl mb-4 text-white max-w-4xl font-bold"
+            duration={0.7}
+            delayMultiple={0.05}
+          />
+        </div>
         <p className="text-neutral-300 text-sm md:text-base max-w-sm">
-          In wenigen einfachen Schritten zu deinem persönlichen Energiesparplan
+          In wenigen Schritten zu deinem persönlichen Energiesparplan
         </p>
       </div>
 
@@ -61,8 +59,8 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
             className="flex justify-start pt-10 md:pt-40 md:gap-10"
           >
             <div className="sticky flex flex-col md:flex-row z-40 items-center top-40 self-start max-w-xs lg:max-w-sm md:w-full">
-              <div className="h-10 absolute left-3 md:left-3 w-10 rounded-full bg-[#2F4F2F] flex items-center justify-center">
-                <div className="h-4 w-4 rounded-full bg-[#3A5A40] border border-[#52B788] p-2" />
+              <div className="h-10 absolute left-3 md:left-3 w-10 rounded-full bg-[#1a1a1a] flex items-center justify-center">
+                <div className="h-4 w-4 rounded-full bg-transparent border border-[#52B788] p-2" />
               </div>
               <h3 className="hidden md:block text-xl md:pl-20 md:text-5xl font-bold text-[#52B788]">
                 {item.title}

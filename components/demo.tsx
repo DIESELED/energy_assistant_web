@@ -34,7 +34,8 @@ export function TimelineDemo() {
       content: (
         <div>
           <p className="text-neutral-300 text-xs md:text-sm font-normal mb-8">
-            Fotografiere deine Wohnung oder dein Haus, damit wir dir die besten Energiespartipps geben können
+          Starte den Energiespar-Assistenten per Text oder Audio. Er hilft dir, deine Situation und Wohnung zu analysieren. 
+          Sende auch Fotos für maßgeschneiderte Energiespartipps.
           </p>
           <div className="grid grid-cols-1 gap-4">
             <Image
@@ -59,10 +60,8 @@ export function TimelineDemo() {
             data={[
               {
                 id: 1,
-                question: "Wie groß ist deine Wohnung/dein Haus?",
-                answer: "Gib einfach die ungefähre Quadratmeterzahl an. Das hilft uns, den Energiebedarf besser einzuschätzen.",
-                icon: "🏠",
-                iconPosition: "left"
+                question: "Wie groß ist deine Wohnung?",
+                answer: "Gib einfach die ungefähre Quadratmeterzahl an. Das hilft uns, den Energiebedarf besser einzuschätzen."
               },
               {
                 id: 2,
@@ -74,15 +73,9 @@ export function TimelineDemo() {
               {
                 id: 3,
                 question: "Welche Heizungsart nutzt du?",
-                answer: "z.B. Gas, Öl, Wärmepumpe, Fernwärme - jedes System hat seine eigenen Optimierungsmöglichkeiten.",
-                icon: "🔥"
-              },
-              {
-                id: 4,
-                question: "Wie alt ist das Gebäude?",
-                answer: "Das Baujahr gibt uns wichtige Hinweise auf mögliche Schwachstellen und Verbesserungspotenziale.",
-                icon: "📅",
-                iconPosition: "left"
+                answer: "",
+                isAudio: true,
+                icon: "🎤"
               }
             ]}
             className="max-w-[600px]"
@@ -95,20 +88,20 @@ export function TimelineDemo() {
       title: "Schritt 3",
       content: (
         <div>
-          <p className="text-neutral-300 text-xs md:text-sm font-normal mb-8">
+          <p className="text-white text-xs md:text-sm font-normal mb-8">
             Erhalte deinen personalisierten Energiesparplan mit konkreten Handlungsempfehlungen
           </p>
           <div className="space-y-4">
-            <div className="flex gap-2 items-center text-[#52B788] text-xs md:text-sm">
+            <div className="flex gap-2 items-center text-white text-xs md:text-sm">
               ✅ Maßgeschneiderte Sparstrategien
             </div>
-            <div className="flex gap-2 items-center text-[#52B788] text-xs md:text-sm">
+            <div className="flex gap-2 items-center text-white text-xs md:text-sm">
               ✅ Konkrete Modernisierungsvorschläge
             </div>
-            <div className="flex gap-2 items-center text-[#52B788] text-xs md:text-sm">
+            <div className="flex gap-2 items-center text-white text-xs md:text-sm">
               ✅ Berechnung deines Einsparpotentials
             </div>
-            <div className="flex gap-2 items-center text-[#52B788] text-xs md:text-sm">
+            <div className="flex gap-2 items-center text-white text-xs md:text-sm">
               ✅ Priorisierte Maßnahmenliste
             </div>
           </div>

@@ -1,143 +1,181 @@
 "use client";
-import { WavyBackgroundDemo } from "@/components/demo";
 import Link from 'next/link';
+import Image from 'next/image';
+import { useState } from 'react';
+import { WavyBackgroundDemo } from "@/components/demo";
 import { TimelineDemo } from "@/components/demo";
 import { TestimonialsSectionDemo } from "@/components/demo";
+import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
+import { FeaturesSectionWithHoverEffects } from "@/components/blocks/feature-section-with-hover-effects";
+
+type Locale = 'de' | 'en';
+
+type TranslationKeys = 'users' | 'title' | 'subtitle' | 'cta' | 'about' | 'language';
+
+type Translations = {
+  [K in Locale]: {
+    [T in TranslationKeys]: string;
+  };
+};
+
+const translations: Translations = {
+  de: {
+    users: "  12.031 ZUFRIEDENE NUTZER",
+    title: "Enerlytic",
+    subtitle: "Dein AI Energy Assistent gibt dir personalisierte Energiespartipps und -empfehlungen für dein Zuhause.",
+    cta: "Starte deinen Energy Assistenten for free",
+    about: "Über uns",
+    language: "Sprache"
+  },
+  en: {
+    users: "  12,031 HAPPY USERS",
+    title: "Enerlytic",
+    subtitle: "Your AI Energy Assistant provides personalized energy-saving tips and recommendations for your home.",
+    cta: "Start your Energy Assistant for free",
+    about: "About Us",
+    language: "Language"
+  }
+};
 
 export default function Home() {
+  const [locale, setLocale] = useState<Locale>('de');
+  
+  const t = (key: TranslationKeys) => translations[locale][key];
+
+  const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setLocale(e.target.value as Locale);
+  };
+
   return (
     <main className="min-h-screen bg-[#1a1a1a]" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-      {/* Hero Section mit Wellen */}
-      <div className="relative">
-        <WavyBackgroundDemo />
-        <style jsx global>{`
-          @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400&display=swap');
-        `}</style>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center w-full">
-          <h1 className="text-4xl md:text-6xl lg:text-8xl text-white mb-6" style={{ fontFamily: 'Playfair Display, serif' }}>
-            Enerlytic
-          </h1>
-          <p className="text-xl md:text-2xl lg:text-3xl text-white font-light max-w-3xl mx-auto leading-relaxed">
-            Dein smarter Guide für ein nachhaltiges und energieeffizientes Zuhause
-          </p>
+      {/* Navigation */}
+      <nav className="absolute top-0 left-0 p-4 flex items-center space-x-2 z-10">
+        <span className="text-white text-xl font-bold">Enerlytic</span>
+        <img src="/christian-dubovan-gxsRL8B_ZqE-unsplash.jpg" alt="Logo" className="w-8 h-8" />
+      </nav>
+
+      <nav className="absolute top-0 right-0 p-4 flex items-center space-x-4 z-10">
+        <Link href="/about" className="text-white hover:text-gray-300">
+          {t('about')}
+        </Link>
+        <select 
+          className="bg-transparent text-gray-300 px-2 py-1 focus:outline-none"
+          value={locale}
+          onChange={handleLanguageChange}
+        >
+          <option value="de">Deutsch</option>
+          <option value="en">English</option>
+        </select>
+      </nav>
+
+      {/* Hero Section */}
+      <div className="relative h-screen">
+        <Image
+          src="/bruce-mars-FWVMhUa_wbY-unsplash.jpg"
+          alt="Enerlytic Hero"
+          fill
+          style={{ objectFit: 'cover', objectPosition: 'center' }}
+          priority
+        />
+        <div className="absolute inset-0 flex items-center justify-start bg-black bg-opacity-50 p-8">
+          <div className="text-left text-white">
+            <div className="flex items-center mb-4">
+              <div className="flex -space-x-3 mb-4">
+                <img
+                  className="rounded-full"
+                  src="https://originui.com/avatar-80-03.jpg"
+                  width={40}
+                  height={40}
+                  alt="Avatar 01"
+                />
+                <img
+                  className="rounded-full"
+                  src="https://originui.com/avatar-80-04.jpg"
+                  width={40}
+                  height={40}
+                  alt="Avatar 02"
+                />
+                <img
+                  className="rounded-full"
+                  src="https://originui.com/avatar-80-05.jpg"
+                  width={40}
+                  height={40}
+                  alt="Avatar 03"
+                />
+                <img
+                  className="rounded-full"
+                  src="https://originui.com/avatar-80-06.jpg"
+                  width={40}
+                  height={40}
+                  alt="Avatar 04"
+                />
+              </div>
+              <span className="text-white ml-4">  {t('users')}</span>
+            </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl mb-6" style={{ fontFamily: 'Playfair Display, serif', fontWeight: 700 }}>
+              <span className="font-bold">Spare</span> bei deiner nächsten<br />monatlichen <span className="font-bold">Strom</span><br />und <span className="font-bold">Heizrechnung</span>
+            </h1>
+            <p className="text-xl md:text-2xl lg:text-3xl font-light max-w-lg leading-relaxed mb-8">
+              {t('subtitle')}
+            </p>
+            <InteractiveHoverButton 
+              text="Kostenlos testen"
+              onClick={() => window.location.href = 'https://t.me/energy_assistant_bot'}
+            />
+          </div>
         </div>
       </div>
       
-      {/* Process Section mit Timeline */}
-      <TimelineDemo />
-      
-      {/* CTA Section */}
-      <section className="bg-[#1a1a1a] py-12">
-        <div className="container mx-auto px-4 text-center text-white">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Bereit für dein smartes Zuhause?
-          </h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto text-gray-300">
-            Starte jetzt mit unserem intelligenten Guide und erhalte personalisierte Empfehlungen für dein energieeffizientes Zuhause
-          </p>
-          <Link 
-            href="https://t.me/energy_assistant_bot" 
-            className="inline-block px-8 py-4 bg-[#2F4F2F] text-white font-semibold rounded-full hover:bg-[#3A5A40] transition-colors"
-          >
-            Jetzt starten
-          </Link>
-        </div>
-      </section>
-      
       {/* Features Grid */}
       <section className="py-20 px-4 bg-[#1a1a1a]">
-        <h2 className="text-3xl text-center text-white font-bold mb-12">
+        <h2 className="text-4xl text-center text-white font-bold mb-12" style={{ fontFamily: 'Playfair Display, serif' }}>
           Deine Chance
         </h2>
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Feature 1 */}
-          <div className="bg-[#1B4332] rounded-xl p-8 hover:bg-[#2D6A4F] transition-colors">
-            <div className="text-4xl mb-4">💸</div>
-            <h3 className="text-xl font-bold mb-4 text-white">
-              Maßgeschneiderte Sparstrategien
-            </h3>
-            <p className="text-gray-300 leading-relaxed">
-              Schluss mit generischen Tipps! Unser smarter Guide analysiert deinen individuellen Modernisierungsstand und zeigt dir glasklar, wo du bares Geld sparen kannst – ohne Aufwand, ohne Kompromisse.
-            </p>
-          </div>
-
-          {/* Feature 2 - Energiezukunft */}
-          <div className="bg-[#2D6A4F] rounded-xl p-8 hover:bg-[#40916C] transition-colors">
-            <div className="text-4xl mb-4">⚡</div>
-            <h3 className="text-xl font-bold mb-4 text-white">
-              Smarte Energieberatung in Echtzeit
-            </h3>
-            <p className="text-gray-300 leading-relaxed">
-              Kein stundenlanges Googeln mehr. Lass dir in wenigen Minuten genau sagen, was du tun kannst, um dein Zuhause zukunftsfähig und klimafreundlich zu gestalten.
-            </p>
-          </div>
-
-          {/* Feature 3 */}
-          <div className="bg-[#40916C] rounded-xl p-8 hover:bg-[#52B788] transition-colors">
-            <div className="text-4xl mb-4">🚀</div>
-            <h3 className="text-xl font-bold mb-4 text-white">
-              Effizient modernisieren leicht gemacht
-            </h3>
-            <p className="text-gray-300 leading-relaxed">
-              Egal, ob du Anfänger oder Profi bist: Unser Guide zeigt dir, welche Schritte wirklich Sinn machen. Effizient, individuell und in deinem Tempo – damit dein Zuhause immer smarter wird.
-            </p>
-          </div>
-
-          {/* Feature 4 - Umwelt */}
-          <div className="bg-[#52B788] rounded-xl p-8 hover:bg-[#74C69D] transition-colors">
-            <div className="text-4xl mb-4">🌍</div>
-            <h3 className="text-xl font-bold mb-4 text-white">
-              Dein Beitrag für den Planeten
-            </h3>
-            <p className="text-gray-300 leading-relaxed">
-              Deine Klimabilanz verbessern und die Umwelt schützen – ganz ohne kompliziertes Fachchinesisch. Der Guide liefert dir maßgeschneiderte Empfehlungen, die wirklich zu dir passen.
-            </p>
-          </div>
-        </div>
+        <FeaturesSectionWithHoverEffects />
       </section>
 
       {/* Personas Section */}
       <section className="py-20 px-4 bg-[#1a1a1a]">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl text-center text-white font-bold mb-12">
+          <h2 className="text-4xl text-center text-white font-bold mb-12" style={{ fontFamily: 'Playfair Display, serif' }}>
             Für jeden die passende Lösung
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Persona 1 - Max */}
             <div className="bg-[#1B4332] rounded-xl p-8 hover:bg-[#2D6A4F] transition-colors">
-              <div className="w-24 h-24 mx-auto mb-6 bg-[#2D6A4F] rounded-full flex items-center justify-center text-white text-4xl">
+              <div className="w-32 h-32 mx-auto mb-6 bg-[#2D6A4F] rounded-full flex items-center justify-center text-white text-6xl">
                 👨🏻
               </div>
-              <h3 className="text-xl font-bold mb-4 text-white text-center">
+              <h3 className="text-2xl font-bold mb-4 text-white text-center">
                 Max, 21 – Der Sparfuchs
               </h3>
-              <p className="text-gray-300 leading-relaxed">
+              <p className="text-gray-300 leading-relaxed text-lg">
                 Max wohnt in einer WG in Berlin-Neukölln und will die Stromkosten für sich und seine Mitbewohner senken, ohne große Investitionen. Unser Guide zeigt ihm direkt umsetzbare Tipps für weniger Verbrauch und mehr Geld im Portemonnaie. So kann er nachhaltig leben, ohne auf Komfort zu verzichten.
               </p>
             </div>
 
             {/* Persona 2 - Tarek */}
             <div className="bg-[#2D6A4F] rounded-xl p-8 hover:bg-[#40916C] transition-colors">
-              <div className="w-24 h-24 mx-auto mb-6 bg-[#40916C] rounded-full flex items-center justify-center text-white text-4xl">
+              <div className="w-32 h-32 mx-auto mb-6 bg-[#40916C] rounded-full flex items-center justify-center text-white text-6xl">
                 👨🏽‍💼
               </div>
-              <h3 className="text-xl font-bold mb-4 text-white text-center">
+              <h3 className="text-2xl font-bold mb-4 text-white text-center">
                 Tarek, 32 – Der Smart-Home-Fan
               </h3>
-              <p className="text-gray-300 leading-relaxed">
+              <p className="text-gray-300 leading-relaxed text-lg">
                 Tarek wohnt in einer modernen Stadtwohnung im Münchner Zentrum und liebt es, sein vernetztes Zuhause ständig zu optimieren. Unser Guide liefert ihm datenbasierte Insights, um seine Energieeffizienz noch weiter zu steigern. So wird sein Smart Home nicht nur komfortabel, sondern auch klimafreundlich.
               </p>
             </div>
 
             {/* Persona 3 - Leyla */}
             <div className="bg-[#40916C] rounded-xl p-8 hover:bg-[#52B788] transition-colors">
-              <div className="w-24 h-24 mx-auto mb-6 bg-[#52B788] rounded-full flex items-center justify-center text-white text-4xl">
+              <div className="w-32 h-32 mx-auto mb-6 bg-[#52B788] rounded-full flex items-center justify-center text-white text-6xl">
                 👷🏽‍♀️
               </div>
-              <h3 className="text-xl font-bold mb-4 text-white text-center">
+              <h3 className="text-2xl font-bold mb-4 text-white text-center">
                 Leyla, 45 – Die Anpackerin
               </h3>
-              <p className="text-gray-300 leading-relaxed">
+              <p className="text-gray-300 leading-relaxed text-lg">
                 Leyla renoviert mit ihrer Familie ein altes Haus aus den 30er Jahren im ländlichen Brandenburg. Sie möchte die Sanierung nutzen, um ihr Zuhause energetisch fit für die Zukunft zu machen. Mit unserem Guide weiß sie genau, welche Modernisierungen sich wirklich lohnen.
               </p>
             </div>
@@ -145,38 +183,39 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Process Section mit Timeline */}
+      <TimelineDemo />
+
+      {/* Testimonials Section */}
+      <TestimonialsSectionDemo />
+
       {/* Final CTA */}
       <section className="py-20 bg-[#1a1a1a]">
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-3xl mx-auto">
-            <h2 className="text-2xl md:text-3xl font-bold mb-8 text-white">
+            <h2 className="text-3xl md:text-4xl font-bold mb-8 text-white" style={{ fontFamily: 'Playfair Display, serif' }}>
               Dein Weg zu mehr Energieeffizienz beginnt hier
             </h2>
-            <Link 
-              href="https://t.me/energy_assistant_bot" 
-              className="inline-block px-8 py-4 bg-[#2F4F2F] text-white font-semibold rounded-full hover:bg-[#3A5A40] transition-colors"
-            >
-              Jetzt kostenlos testen
-            </Link>
+            <InteractiveHoverButton 
+              text="Kostenlos testen"
+              onClick={() => window.location.href = 'https://t.me/energy_assistant_bot'}
+            />
           </div>
         </div>
       </section>
-
-      {/* Testimonials Section */}
-      <TestimonialsSectionDemo />
 
       {/* Footer */}
       <footer className="bg-[#1a2e1a] py-8">
         <div className="container mx-auto px-4">
           <div className="flex justify-center space-x-8">
             <Link 
-              href="/impressum" 
+              href="/impressum"
               className="text-white hover:text-[#3A5A40] transition-colors"
             >
               Impressum
             </Link>
             <Link 
-              href="/datenschutz" 
+              href="/datenschutz"
               className="text-white hover:text-[#3A5A40] transition-colors"
             >
               Datenschutz

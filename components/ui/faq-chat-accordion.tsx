@@ -3,7 +3,7 @@
 import * as React from "react";
 import { motion } from "framer-motion";
 import * as Accordion from "@radix-ui/react-accordion";
-import { Minus, Plus } from "lucide-react";
+import { Minus, Plus, Play } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface FAQItem {
@@ -12,6 +12,7 @@ interface FAQItem {
   answer: string;
   icon?: string;
   iconPosition?: "left" | "right";
+  isAudio?: boolean;
 }
 
 interface FaqAccordionProps {
@@ -31,6 +32,8 @@ export function FaqAccordion({
 }: FaqAccordionProps) {
   const [openItem, setOpenItem] = React.useState<string | null>(null);
 
+  const allOpenItems = data.map(item => item.id.toString());
+
   return (
     <div className={cn("p-4", className)}>
       {timestamp && (
@@ -38,10 +41,9 @@ export function FaqAccordion({
       )}
 
       <Accordion.Root
-        type="single"
-        collapsible
-        value={openItem || ""}
-        onValueChange={(value) => setOpenItem(value)}
+        type="multiple"
+        value={allOpenItems}
+        onValueChange={(value) => setOpenItem(value.join(','))}
       >
         {data.map((item) => (
           <Accordion.Item 
@@ -84,25 +86,14 @@ export function FaqAccordion({
                     openItem === item.id.toString() && "text-[#52B788]"
                   )}
                 >
-                  {openItem === item.id.toString() ? (
+                  {openItem === item.id.toString() && (
                     <Minus className="h-5 w-5" />
-                  ) : (
-                    <Plus className="h-5 w-5" />
                   )}
                 </span>
               </Accordion.Trigger>
             </Accordion.Header>
             <Accordion.Content asChild forceMount>
-              <motion.div
-                initial="collapsed"
-                animate={openItem === item.id.toString() ? "open" : "collapsed"}
-                variants={{
-                  open: { opacity: 1, height: "auto" },
-                  collapsed: { opacity: 0, height: 0 },
-                }}
-                transition={{ duration: 0.4 }}
-                className="overflow-hidden"
-              >
+              <div className="overflow-hidden">
                 <div className="ml-7 mt-1 md:ml-16">
                   <div
                     className={cn(
@@ -110,10 +101,33 @@ export function FaqAccordion({
                       answerClassName
                     )}
                   >
-                    {item.answer}
+                    {item.isAudio ? (
+                      <>
+                        <div className="flex items-center gap-3 mb-2">
+                          <Play size={16} className="text-white/60" />
+                          <div className="flex gap-[2px] items-center h-3">
+                            {[...Array(12)].map((_, i) => (
+                              <div
+                                key={i}
+                                className="w-[2px] bg-white/60"
+                                style={{
+                                  height: `${Math.sin(i * 0.5) * 8 + 10}px`
+                                }}
+                              />
+                            ))}
+                          </div>
+                          <span className="text-xs text-white/60">0:42</span>
+                        </div>
+                        <div className="pl-1">
+                          {item.answer}
+                        </div>
+                      </>
+                    ) : (
+                      item.answer
+                    )}
                   </div>
                 </div>
-              </motion.div>
+              </div>
             </Accordion.Content>
           </Accordion.Item>
         ))}
