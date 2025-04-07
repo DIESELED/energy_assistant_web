@@ -134,55 +134,6 @@ export default function Home() {
         <FeaturesSectionWithHoverEffects />
       </section>
 
-      {/* Personas Section */}
-      <section className="py-20 px-4 bg-[#1a1a1a]">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl text-center text-white font-bold mb-12" style={{ fontFamily: 'Playfair Display, serif' }}>
-            Für jeden die passende Lösung
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Persona 1 - Max */}
-            <div className="bg-[#1B4332] rounded-xl p-8 hover:bg-[#2D6A4F] transition-colors">
-              <div className="w-32 h-32 mx-auto mb-6 bg-[#2D6A4F] rounded-full flex items-center justify-center text-white text-6xl">
-                👨🏻
-              </div>
-              <h3 className="text-2xl font-bold mb-4 text-white text-center">
-                Max, 21 – Der Sparfuchs
-              </h3>
-              <p className="text-gray-300 leading-relaxed text-lg">
-                Max wohnt in einer WG in Berlin-Neukölln und will die Stromkosten für sich und seine Mitbewohner senken, ohne große Investitionen. Unser Guide zeigt ihm direkt umsetzbare Tipps für weniger Verbrauch und mehr Geld im Portemonnaie. So kann er nachhaltig leben, ohne auf Komfort zu verzichten.
-              </p>
-            </div>
-
-            {/* Persona 2 - Tarek */}
-            <div className="bg-[#2D6A4F] rounded-xl p-8 hover:bg-[#40916C] transition-colors">
-              <div className="w-32 h-32 mx-auto mb-6 bg-[#40916C] rounded-full flex items-center justify-center text-white text-6xl">
-                👨🏽‍💼
-              </div>
-              <h3 className="text-2xl font-bold mb-4 text-white text-center">
-                Tarek, 32 – Der Smart-Home-Fan
-              </h3>
-              <p className="text-gray-300 leading-relaxed text-lg">
-                Tarek wohnt in einer modernen Stadtwohnung im Münchner Zentrum und liebt es, sein vernetztes Zuhause ständig zu optimieren. Unser Guide liefert ihm datenbasierte Insights, um seine Energieeffizienz noch weiter zu steigern. So wird sein Smart Home nicht nur komfortabel, sondern auch klimafreundlich.
-              </p>
-            </div>
-
-            {/* Persona 3 - Leyla */}
-            <div className="bg-[#40916C] rounded-xl p-8 hover:bg-[#52B788] transition-colors">
-              <div className="w-32 h-32 mx-auto mb-6 bg-[#52B788] rounded-full flex items-center justify-center text-white text-6xl">
-                👷🏽‍♀️
-              </div>
-              <h3 className="text-2xl font-bold mb-4 text-white text-center">
-                Leyla, 45 – Die Anpackerin
-              </h3>
-              <p className="text-gray-300 leading-relaxed text-lg">
-                Leyla renoviert mit ihrer Familie ein altes Haus aus den 30er Jahren im ländlichen Brandenburg. Sie möchte die Sanierung nutzen, um ihr Zuhause energetisch fit für die Zukunft zu machen. Mit unserem Guide weiß sie genau, welche Modernisierungen sich wirklich lohnen.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Process Section mit Timeline */}
       <TimelineDemo />
 

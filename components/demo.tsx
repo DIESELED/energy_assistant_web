@@ -93,16 +93,16 @@ export function TimelineDemo() {
           </p>
           <div className="space-y-4">
             <div className="flex gap-2 items-center text-white text-xs md:text-sm">
-              ✅ Maßgeschneiderte Sparstrategien
+               Maßgeschneiderte Sparstrategien
             </div>
             <div className="flex gap-2 items-center text-white text-xs md:text-sm">
-              ✅ Konkrete Modernisierungsvorschläge
+               Konkrete Modernisierungsvorschläge
             </div>
             <div className="flex gap-2 items-center text-white text-xs md:text-sm">
-              ✅ Berechnung deines Einsparpotentials
+               Berechnung deines Einsparpotentials
             </div>
             <div className="flex gap-2 items-center text-white text-xs md:text-sm">
-              ✅ Priorisierte Maßnahmenliste
+               Priorisierte Maßnahmenliste
             </div>
           </div>
         </div>

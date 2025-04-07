@@ -13,25 +13,25 @@ import {
 export function FeaturesSectionWithHoverEffects() {
   const features = [
     {
-      title: "Ease of use",
+      title: "Maßgeschneiderte Sparstrategien",
       description:
-        "It's as easy as using an Apple, and as expensive as buying one.",
+        "Schluss mit generischen Tipps! Unser smarter Bot analysiert deinen individuellen Modernisierungsstand und zeigt dir glasklar, wo du bares Geld sparen kannst – ohne Aufwand, ohne Kompromisse.",
       icon: <IconEaseInOut />,
     },
     {
-      title: "Pricing like no other",
+      title: "Soforthilfe für deine Energiezukunft",
       description:
-        "Our prices are best in the market. No cap, no lock, no credit card required.",
+        "Kein stundenlanges Googeln mehr. Lass dir in wenigen Minuten genau sagen, was du tun kannst, um dein Zuhause zukunftsfähig und klimafreundlich zu gestalten.",
       icon: <IconCurrencyDollar />,
     },
     {
-      title: "And everything else",
-      description: "I just ran out of copy ideas. Accept my sincere apologies",
+      title: "Effizient modernisieren leicht gemacht",
+      description: "Egal, ob du Anfänger oder Profi bist: Unser Bot zeigt dir, welche Schritte wirklich Sinn machen. Effizient, individuell und in deinem Tempo – damit dein Zuhause immer smarter wird.",
       icon: <IconHeart />,
     },
   ];
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center relative z-10 py-10 max-w-7xl mx-auto">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center relative z-10 py-5 max-w-7xl mx-auto">
       {features.map((feature, index) => (
         <Feature key={feature.title} {...feature} index={index} />
       ))}
@@ -53,7 +53,7 @@ const Feature = ({
   return (
     <div
       className={cn(
-        "flex flex-col lg:border-r border-transparent py-10 relative group/feature dark:border-neutral-800",
+        "flex flex-col lg:border-r border-transparent py-5 relative group/feature dark:border-neutral-800",
         (index === 0 || index === 4) && "lg:border-l border-transparent dark:border-neutral-800",
         index < 4 && "lg:border-b border-transparent dark:border-neutral-800"
       )}
@@ -67,13 +67,13 @@ const Feature = ({
       <div className="mb-4 relative z-10 px-10 text-white">
         {icon}
       </div>
-      <div className="text-lg font-semibold mb-2 relative z-10 px-10 text-left">
+      <div className="text-xl font-semibold mb-2 relative z-10 px-10 text-left">
         <div className="absolute left-0 inset-y-0 h-6 group-hover/feature:h-7 w-1 rounded-tr-full rounded-br-full bg-neutral-400 dark:bg-neutral-600 group-hover/feature:bg-green-300 transition-all duration-150 origin-center" />
         <span className="inline-block text-white">
           {title}
         </span>
       </div>
-      <p className="text-sm text-white max-w-xs relative z-10 px-10 text-left">
+      <p className="text-base text-white max-w-xs relative z-10 px-10 text-left">
         {description}
       </p>
     </div>
